@@ -6,7 +6,13 @@ public class WordPairList {
     private ArrayList<WordPair> allPairs;
 
     public WordPairList(String[] words) {
-        /* to be implemented in part (a) */
+        allPairs = new ArrayList<>();
+        for (int i = 0; i < words.length; i++) {
+            for (int z = i + 1; z < words.length; z++) {
+                WordPair curr = new WordPair(words[i], words[z]);
+                allPairs.add(curr);
+            }
+        }
     }
 
     // The method below was added for testing;
@@ -16,8 +22,13 @@ public class WordPairList {
     }
 
     public int numMatches() {
-        /* to be implemented in part (b) */
-        return 0;
+        int matches = 0;
+        for (int i = 0; i < allPairs.size(); i++) {
+            if (allPairs.get(i).getFirst().equals(allPairs.get(i).getSecond())) {
+                matches++;
+            }
+        }
+        return matches;
     }
 
     // The method below was added for testing;
